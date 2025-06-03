@@ -1,0 +1,39 @@
+.todo-footer {
+    padding: 16px 24px 20px 24px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: -0.19px;
+            color: #9495a5;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        span:hover {
+            color: #494c6b;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            li {
+                font-weight: 700;
+                font-size: 14px;
+                letter-spacing: -0.19px;
+                color: #9495a5;
+                cursor: pointer;
+                transition: all 0.5s ease;
+            }
+            li.active {
+                color: #3a7cfd;
+            }
+            li:hover {
+                color: #494c6b;
+            }
+        }
+    }
+}

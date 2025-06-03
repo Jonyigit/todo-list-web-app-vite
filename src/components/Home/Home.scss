@@ -1,0 +1,142 @@
+.dark-mode {
+    background: #171823;
+    transition: all 0.5s ease;
+    .todo-list-app {
+        background-image: url("/src/assets/images/bg2.jpg");
+
+        .container {
+            .todo-form {
+                form {
+                    background: #25273d;
+                    box-shadow: 0px 35px 50px -15px #00000080;
+                    input[type="text"] {
+                        color: #c8cbe7;
+                    }
+                    input[type="checkbox"] {
+                        border: 1px solid #393a4b;
+                    }
+                    input[type="checkbox"]:checked ~ input[type="text"] {
+                        color: #4d5067;
+                    }
+                    span {
+                        color: red;
+                    }
+                }
+            }
+            .todo-lists {
+                background: #25273d;
+                box-shadow: 0px 35px 50px -15px #00000080;
+                .todo-list {
+                    &::-webkit-scrollbar-thumb {
+                        background: #393a4b;
+                    }
+                    .list {
+                        border-bottom: 1px solid #393a4b;
+                        span {
+                            color: #c8cbe7;
+                        }
+                        input {
+                            border: 1px solid #393a4b;
+                        }
+                        input:checked ~ span {
+                            color: #4d5067;
+                        }
+                    }
+                }
+                .dragging-overlay {
+                    background: #25273d;
+                    border-bottom: 1px solid #393a4b;
+
+                    span {
+                        color: #c8cbe7;
+                    }
+                    input {
+                        border: 1px solid #393a4b;
+                    }
+                    input:checked ~ span {
+                        color: #4d5067;
+                    }
+                }
+                .todo-footer {
+                    .container {
+                        span {
+                            color: #5b5e7e;
+                        }
+                        span:hover {
+                            color: #e3e4f1;
+                        }
+                        .navbar {
+                            li {
+                                color: #5b5e7e;
+                            }
+                            li:hover {
+                                color: #e3e4f1;
+                            }
+                            li.active {
+                                color: #3a7cfd;
+                            }
+                        }
+                    }
+                }
+                .archive {
+                    .archive-btn {
+                        background: #c8cbe7;
+                    }
+                    .archive-lists {
+                        box-shadow: 0px 35px 50px -15px #00000080;
+                        background: #25273d;
+                        .archived-section {
+                            h4 {
+                                color: #c8cbe7;
+                            }
+                            ul {
+                                li {
+                                    border-bottom: 1px solid #393a4b;
+                                    span {
+                                        color: #c8cbe7;
+                                    }
+
+                                    input {
+                                        border: 1px solid #393a4b;
+                                    }
+                                    input:checked ~ span {
+                                        color: #4d5067;
+                                    }
+                                }
+                            }
+                            .empty {
+                                p {
+                                    color: #c8cbe7;
+                                }
+                            }
+                        }
+                    }
+                }
+                .todo-modal {
+                    background: #25273d;
+                    h1 {
+                        color: #c8cbe7;
+                    }
+                }
+            }
+        }
+    }
+}
+.todo-list-app {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url("/src/assets/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 70px;
+    transition: all 0.5s ease;
+
+    .container {
+        max-width: 540px;
+        width: 100%;
+        height: auto;
+    }
+}
