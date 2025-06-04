@@ -7,8 +7,11 @@ import SortableItem from "../SortableItem/SortableItem";
 import ArchiveSection from "../Archive/Archive";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import "./TodoList.scss";
+import mockData from "../../utils/constans";
 
 export default function TodoList({ todo, setTodo, filter, setFilter }) {
+    console.log(mockData);
+
     const [archive, setArchive] = useState(() => {
         const storedArchive = localStorage.getItem("archive");
         return storedArchive ? JSON.parse(storedArchive) : [];
