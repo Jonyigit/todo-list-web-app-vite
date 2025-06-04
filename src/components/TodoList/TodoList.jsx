@@ -10,7 +10,7 @@ import "./TodoList.scss";
 import mockData from "../../utils/constans";
 
 export default function TodoList({ todo, setTodo, filter, setFilter }) {
-    console.log(mockData);
+    console.log("MockData ->", mockData);
 
     const [archive, setArchive] = useState(() => {
         const storedArchive = localStorage.getItem("archive");

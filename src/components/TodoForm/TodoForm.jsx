@@ -17,6 +17,8 @@ export default function TodoForm({ setTodo, theme, setTheme }) {
     } = useForm();
 
     const onSubmit = (data) => {
+        if (!data.todo.trim()) return;
+
         const label = data.todo.length <= 45 ? data.todo : data.todo.slice(0, 40) + "...";
         const newTodo = {
             id: uuidv4(),
@@ -32,16 +34,23 @@ export default function TodoForm({ setTodo, theme, setTheme }) {
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Enter") {
+                e.preventDefault();
                 handleSubmit(onSubmit)();
             }
         };
 
-        window.addEventListener("keydown", handleKeyDown);
+        const inputElement = document.querySelector('input[type="text"]');
+        if (inputElement) {
+            inputElement.addEventListener("keydown", handleKeyDown);
+        }
 
         return () => {
-            window.removeEventListener("keydown", handleKeyDown);
+            const inputElement = document.querySelector('input[type="text"]');
+            if (inputElement) {
+                inputElement.removeEventListener("keydown", handleKeyDown);
+            }
         };
-    }, []);
+    }, [handleSubmit, isChecked]);
 
     return (
         <section className="todo-form">
@@ -52,8 +61,13 @@ export default function TodoForm({ setTodo, theme, setTheme }) {
                 </div>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className={clsx({ "error-border": errors.todo })}>
-                <input type="checkbox" checked={isChecked} onChange={() => setIsChecked((prev) => !prev)} />
+            <form onSubmit={handleSubmit(onSubmit)} className={clsx({ "error-border": errors.todo })}>
+                <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={() => setIsChecked((prev) => !prev)}
+                    className="checkbox-input"
+                />
                 <input
                     type="text"
                     placeholder="Create a new todo…"
