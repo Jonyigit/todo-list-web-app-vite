@@ -2,7 +2,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import "./TodoFooter.scss";
 
-export default function TodoFooter({ todo, setTodo, setFilter }) {
+export default function TodoFooter({ todo, setTodo, setFilter, setArchive }) {
     const [active, setActive] = useState("all");
 
     const handleFilter = (filterType) => {
@@ -11,8 +11,15 @@ export default function TodoFooter({ todo, setTodo, setFilter }) {
     };
 
     const clearComplate = () => {
-        let removeComplate = todo.filter((item) => !item.isChecked);
-        setTodo(removeComplate);
+        const completedTodos = todo.filter((item) => item.isChecked);
+
+        const remainingTodos = todo.filter((item) => !item.isChecked);
+
+        if (completedTodos.length > 0) {
+            setArchive((prev) => [...prev, ...completedTodos]);
+        }
+
+        setTodo(remainingTodos);
     };
 
     const itemsLeft = todo.filter((item) => !item.isChecked).length;

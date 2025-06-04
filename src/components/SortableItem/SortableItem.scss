@@ -1,0 +1,69 @@
+.dragging-overlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 24px;
+    gap: 24px;
+    border-bottom: 1px solid #e3e4f1;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+    opacity: 1;
+    z-index: 100;
+    background: #fff;
+    cursor: grabbing;
+
+    span {
+        flex-grow: 1;
+        text-align: left;
+        font-weight: 400;
+        font-size: 18px;
+        letter-spacing: -0.25px;
+        color: #494c6b;
+    }
+
+    img {
+        cursor: pointer;
+        display: block;
+    }
+
+    input {
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        border: 1px solid #e3e4f1;
+        border-radius: 100%;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+
+        &:checked ~ span {
+            text-decoration: line-through;
+            color: #d1d2da;
+        }
+
+        &:checked {
+            background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+        }
+
+        &::before {
+            content: "";
+            background-image: url("/src/assets/icon/check.svg");
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 8px;
+            pointer-events: none;
+            display: none;
+        }
+
+        &:checked::before {
+            display: block;
+            z-index: 1;
+        }
+    }
+}

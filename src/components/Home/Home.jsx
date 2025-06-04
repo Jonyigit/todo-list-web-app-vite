@@ -35,10 +35,11 @@ export default function Home() {
 
     return (
         <section className="todo-list-app">
-            <div className="container">
+            <div className="container-todo">
                 <TodoForm setTodo={setTodo} theme={theme} setTheme={setTheme} />
                 <TodoList todo={todo} setTodo={setTodo} filter={filter} setFilter={setFilter} />
             </div>
+            <span className="drag-commit">Drag and drop to reorder list</span>
         </section>
     );
 }

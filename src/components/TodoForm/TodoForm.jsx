@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import clsx from "clsx";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import moonIcon from "../../assets/icon/moon.svg";
 import sunIcon from "../../assets/icon/sun.svg";
 import "./TodoForm.scss";
@@ -29,6 +29,20 @@ export default function TodoForm({ setTodo, theme, setTheme }) {
         setIsChecked(false);
     };
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "Enter") {
+                handleSubmit(onSubmit)();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
+
     return (
         <section className="todo-form">
             <div className="theme-box">
@@ -38,7 +52,7 @@ export default function TodoForm({ setTodo, theme, setTheme }) {
                 </div>
             </div>
 
-            <form onSubmit={handleSubmit(onSubmit)} className={clsx({ "error-border": errors.todo })}>
+            <form onSubmit={(e) => e.preventDefault()} className={clsx({ "error-border": errors.todo })}>
                 <input type="checkbox" checked={isChecked} onChange={() => setIsChecked((prev) => !prev)} />
                 <input
                     type="text"
