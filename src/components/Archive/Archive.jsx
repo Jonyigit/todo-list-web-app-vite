@@ -6,9 +6,24 @@ import emptyImg from "../../assets/images/detective.png";
 import cros from "../../assets/icon/cros.svg";
 import "./Archive.scss";
 
-export default function ArchiveSection({ state, setState, archive, handleClearClick }) {
+export default function ArchiveSection({ state, setState, archive, handleClearClick, setArchive, setTodo }) {
     const activeArchived = archive.filter((item) => !item.isChecked);
     const completedArchived = archive.filter((item) => item.isChecked);
+
+    const deleteArchiveTodo = (id) => {
+        const updatedArchive = archive.filter((item) => item.id !== id);
+        setArchive(updatedArchive);
+    };
+
+    const restoreArchiveTodo = (id) => {
+        const itemToRestore = archive.find((item) => item.id === id);
+        if (!itemToRestore) return;
+
+        const updatedArchive = archive.filter((item) => item.id !== id);
+        setArchive(updatedArchive);
+
+        setTodo((prev) => [...prev, itemToRestore]);
+    };
 
     return (
         <>
@@ -33,11 +48,17 @@ export default function ArchiveSection({ state, setState, archive, handleClearCl
                                         <li key={id}>
                                             <input type="checkbox" checked={false} disabled />
                                             <span title={label}>
-                                                {label.length > 15 ? label.slice(0, 15) + "..." : label}
+                                                {label.length > 25 ? label.slice(0, 25) + "..." : label}
                                             </span>
                                             <div className="icons">
-                                                <SlReload style={{ cursor: "pointer", color: "#9495a5" }} />
-                                                <MdDelete style={{ cursor: "pointer", color: "#9495a5" }} />
+                                                <SlReload
+                                                    style={{ cursor: "pointer", color: "#9495a5" }}
+                                                    onClick={() => restoreArchiveTodo(id)}
+                                                />
+                                                <MdDelete
+                                                    style={{ cursor: "pointer", color: "#9495a5" }}
+                                                    onClick={() => deleteArchiveTodo(id)}
+                                                />
                                             </div>
                                         </li>
                                     ))}
@@ -58,11 +79,17 @@ export default function ArchiveSection({ state, setState, archive, handleClearCl
                                         <li key={id}>
                                             <input type="checkbox" checked={true} disabled />
                                             <span title={label}>
-                                                {label.length > 15 ? label.slice(0, 15) + "..." : label}
+                                                {label.length > 25 ? label.slice(0, 25) + "..." : label}
                                             </span>
                                             <div className="icons">
-                                                <SlReload style={{ cursor: "pointer", color: "#9495a5" }} />
-                                                <MdDelete style={{ cursor: "pointer", color: "#9495a5" }} />
+                                                <SlReload
+                                                    style={{ cursor: "pointer", color: "#9495a5" }}
+                                                    onClick={() => restoreArchiveTodo(id)}
+                                                />
+                                                <MdDelete
+                                                    style={{ cursor: "pointer", color: "#9495a5" }}
+                                                    onClick={() => deleteArchiveTodo(id)}
+                                                />
                                             </div>
                                         </li>
                                     ))}

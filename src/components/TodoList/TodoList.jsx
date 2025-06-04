@@ -46,6 +46,15 @@ export default function TodoList({ todo, setTodo, filter, setFilter }) {
         if (deletedItem) setArchive((prev) => [...prev, deletedItem]);
     };
 
+    const editTodo = (id, newLabel) => {
+        const trimmed = newLabel.trim();
+        if (!trimmed) return;
+
+        const finalLabel = trimmed.length > 30 ? trimmed.slice(0, 30) + "..." : trimmed;
+
+        setTodo((prev) => prev.map((item) => (item.id === id ? { ...item, label: finalLabel } : item)));
+    };
+
     useEffect(() => {
         localStorage.setItem("archive", JSON.stringify(archive));
     }, [archive]);
@@ -103,6 +112,7 @@ export default function TodoList({ todo, setTodo, filter, setFilter }) {
                                         isChecked={item.isChecked}
                                         changeCheck={changeCheck}
                                         deleteTodo={deleteTodo}
+                                        editTodo={editTodo}
                                     />
                                 ))
                             )}
@@ -125,7 +135,14 @@ export default function TodoList({ todo, setTodo, filter, setFilter }) {
 
                 {showModal && <ConfirmModal onCancel={handleCancel} onConfirm={clearArchive} />}
             </section>
-            <ArchiveSection archive={archive} state={state} setState={setState} handleClearClick={handleClearClick} />
+            <ArchiveSection
+                archive={archive}
+                state={state}
+                setState={setState}
+                handleClearClick={handleClearClick}
+                setArchive={setArchive}
+                setTodo={setTodo}
+            />
         </>
     );
 }

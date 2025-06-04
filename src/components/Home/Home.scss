@@ -35,11 +35,14 @@
                         span {
                             color: #c8cbe7;
                         }
-                        input {
+                        input[type="checkbox"] {
                             border: 1px solid #393a4b;
                         }
                         input:checked ~ span {
                             color: #4d5067;
+                        }
+                        .edit-input {
+                            color: #c8cbe7;
                         }
                     }
                 }

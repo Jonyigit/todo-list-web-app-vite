@@ -26,6 +26,19 @@
             transition: transform 0.2s ease, opacity 0.2s ease;
             cursor: grab;
 
+            .edit-input {
+                flex-grow: 1;
+                outline: 0;
+                border: 0;
+                text-align: left;
+                font-weight: 400;
+                font-size: 18px;
+                letter-spacing: -0.25px;
+                color: #494c6b;
+                font-family: inherit;
+                background: inherit;
+            }
+
             span {
                 flex-grow: 1;
                 text-align: left;
@@ -38,10 +51,9 @@
             img {
                 cursor: pointer;
                 transition: all 0.3s ease;
-                display: none;
             }
 
-            input {
+            input[type="checkbox"] {
                 appearance: none;
                 width: 24px;
                 height: 24px;
@@ -78,12 +90,6 @@
                 &:checked::before {
                     display: block;
                     z-index: 1;
-                }
-            }
-
-            &:hover {
-                img {
-                    display: block;
                 }
             }
 
