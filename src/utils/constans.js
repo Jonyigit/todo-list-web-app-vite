@@ -59,6 +59,84 @@ const mockData = [
         isChecked: false,
         type: "active",
     },
+    {
+        id: 11,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 12,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 13,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 14,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 15,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 16,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 17,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 18,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 19,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 20,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 21,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 22,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
+    {
+        id: 23,
+        label: "Learn React 10",
+        isChecked: false,
+        type: "active",
+    },
 ];
 
 export default mockData;
